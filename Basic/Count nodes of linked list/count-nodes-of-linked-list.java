@@ -27,8 +27,13 @@ class Solution
     {
         
         //Code here
-        return head == null? 0:getCount(head.next)+1;
-        
+        int count = 0;
+        Node temp = head;
+        while(temp!=null){
+            count++;
+            temp = temp.next;
+        }
+        return count;
     }
 }
     
