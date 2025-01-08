@@ -7,32 +7,24 @@ using namespace std;
 class Solution {
   public:
     vector<int> subarraySum(vector<int> &arr, int target) {
-        // code her
-         vector<int> result{-1};
-
-        for(int i = 0; i < arr.size() - 1; i++)
-        {
-            if (arr[i] == target)
-                return vector<int> {i + 1, i + 1};        
-            if(arr[i] < target)
-            {
-                int j = i + 1;
-                int temp = arr[i] + arr[j];
-                while( temp < target && ++j < arr.size() )
-                {
-                    temp += arr[j];
-                }
-                if( temp == target)
-                {
-                    result[0] = i+1;
-                    result.push_back( j+1 );
-                    break;
-                }
-            }
-        }
-        if(arr.back() == target)
-            return vector<int> {arr.size(), arr.size()};
-        return result;
+        // code here
+            vector<int>ans;
+        for(int start=0;start<arr.size();start++)
+         {
+             int currsum=0;
+             for(int end=start;end<arr.size();end++)
+              {
+                  currsum+=arr[end];
+                  if(currsum==target)
+                   {
+                       ans.push_back(start+1);
+                       ans.push_back(end+1);
+                       return ans;
+                   }
+              }
+         }
+         ans.push_back(-1);
+         return ans;
     }
 };
 
