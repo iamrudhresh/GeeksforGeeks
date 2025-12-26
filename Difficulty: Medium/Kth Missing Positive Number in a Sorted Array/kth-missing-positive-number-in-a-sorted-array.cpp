@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    int kthMissing(vector<int> &arr, int k) {
+        // code here
+        vector<int>ans;
+        int i = 1;
+        int id =0;
+        while(i<=arr[arr.size()-1]){
+            if(i < arr[id]) {
+                ans.push_back(i);
+                i++;
+            }
+            else {
+                i++, id++;
+            }
+        }
+        if(ans.size()<k) return arr[arr.size()-1] + k-ans.size();
+        return ans[k-1];
+    }
+};
